@@ -1,0 +1,52 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    font-size: 14px;
+    position: fixed; /* 화면 아래 고정 */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* 화면 전체 너비 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+.footer-section {
+    margin-bottom: 10px;
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-section p {
+    line-height: 1.5;
+    margin: 0;
+}

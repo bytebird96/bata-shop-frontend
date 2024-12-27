@@ -1,0 +1,34 @@
+# Node.js 의존성 디렉토리
+/node_modules
+/.pnp
+.pnp.js
+
+# 빌드 아티팩트
+/coverage
+/build
+
+# 환경설정 파일 (로컬 환경 변수)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 운영체제 및 IDE 파일
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# 로그 파일
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 기타 불필요한 파일
+*.lock
+*.log
+*.cache
