@@ -3,28 +3,35 @@
     color: #fff;
     padding: 20px 0;
     font-size: 14px;
-    position: fixed; /* 화면 아래 고정 */
-    bottom: 0;
-    left: 0;
+    position: relative; /* 고정 대신 아래로 밀리도록 설정 */
     width: 100%; /* 화면 전체 너비 */
     text-align: center; /* 텍스트 중앙 정렬 */
+    bottom: 0;
 }
 
-.footer-content {
+.footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* 수직 중앙 정렬 */
+    flex-wrap: wrap; /* 행이 넘칠 경우 다음 줄로 감 */
+    justify-content: space-between; /* 각 섹션을 균등 분배 */
+    align-items: flex-start;
 }
 
 .footer-section {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    flex: 1; /* 각 섹션이 균등한 크기를 가짐 */
+    padding: 0 10px;
+    min-width: 200px; /* 최소 너비 */
 }
 
 .footer-section h3 {
     font-size: 16px;
     margin-bottom: 10px;
+    text-transform: uppercase; /* 대문자 변환 */
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
 }
 
 .footer-section ul {
@@ -40,13 +47,25 @@
 .footer-section ul li a {
     color: #fff;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .footer-section ul li a:hover {
     text-decoration: underline;
+    color: #f39c12;
 }
 
 .footer-section p {
     line-height: 1.5;
     margin: 0;
+    font-size: 14px;
+}
+
+.footer-section a {
+    color: #f39c12;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
 }

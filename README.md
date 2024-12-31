@@ -7,6 +7,11 @@
 
 ---
 
+👉🏻 **구현 화면**
+
+<img src="https://github.com/user-attachments/assets/b767e3c8-a904-44d9-b39b-50cd0b4fa51c"/>
+
+---
 ## 👉🏻 사용 기술 스택(추가될 예정)
 - **React**
   - 컴포넌트 기반의 UI 라이브러리로, 재사용 가능하고 동적인 사용자 인터페이스를 제공하기 위해 사용하였습니다.

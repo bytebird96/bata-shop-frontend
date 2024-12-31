@@ -19,7 +19,9 @@ function Footer() {
                 <div className="footer-section">
                     <h3>제작자 정보·고지사항</h3>
                     <p>
-                        git: <a href="https://github.com/bytebird96/bytebird96.git">https://github.com/bytebird96/bytebird96.git</a><br/>
+                        Git: <a href="https://github.com/bytebird96/bytebird96.git" target="_blank" rel="noopener noreferrer">
+                        https://github.com/bytebird96/bytebird96.git
+                    </a>
                     </p>
                 </div>
             </div>

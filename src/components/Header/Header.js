@@ -5,7 +5,7 @@ function Header({ onLoginClick }) {
     return (
         <header className="header">
             <div className="header-left">
-                <img src="https://via.placeholder.com/40x40" alt="Logo" className="header-logo" />
+                <img src="http://localhost:8080/bata-shop/images/main.webp" alt="Logo" className="header-logo" />
                 <nav className="header-nav">
                     <a href="#bestseller" className="header-link">베스트셀러</a>
                     <a href="#new" className="header-link">신상품</a>

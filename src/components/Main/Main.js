@@ -7,10 +7,11 @@ function Main() {
     const [products, setProducts] = useState([]);
     //로딩 상태 구현
     const [loading, setLoading] = useState(true);
-
+    debugger;
+    //2번 타는 오류 있음 수정 해야함
     useEffect(() => {
         //API 호출
-        axios.get('http://localhost:8080/api/products')
+        axios.get('http://localhost:8080/bata-shop/api/products/getProducts')
             .then((response) => {
                 setProducts(response.data.content); // 상품 데이터 설정
                 setLoading(false);
@@ -19,9 +20,9 @@ function Main() {
                 console.error('상품 데이터를 가져오는 중 오류 발생:', error);
                 setLoading(false);
             })
-    },[]);
+    }, []);
 
-    if(setLoading){
+    if (loading) {
         return <p>로딩 중...</p>;
     }
 
@@ -29,10 +30,11 @@ function Main() {
         <div className="main">
             <h1>"검색어"에 대한 결과</h1>
             <div className="product-grid">
-                {products.map((product,index) => (
+                {products.map((product, index) => (
                     <div key={index} className="product-card">
                         <img
-                            src={product.image || `https://via.placeholder.com/150x100?text=Product+${index + 1}`}
+                            src={`http://localhost:8080/bata-shop/images/${product.image}`
+                                || `https://via.placeholder.com/150x100?text=Product+${index + 1}`}
                             alt={product.name}
                             className="product-image"
                         />
