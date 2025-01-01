@@ -22,11 +22,53 @@
     cursor: pointer;
 }
 
-.login-options {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
+.login-options button {
+    width: 30%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
+
+.login-options button:hover {
+    transform: scale(1.05); /* 버튼 크기 확대 효과 */
+}
+
+.login-options button:active {
+    transform: scale(0.95); /* 클릭 시 축소 효과 */
+}
+
+.login-options button:nth-child(1) {
+    background-color: #FEE500; /* 카카오 옐로우 */
+    color: #3C1E1E;
+}
+
+.login-options button:nth-child(1):hover {
+    background-color: #FFD700; /* 더 밝은 카카오 색상 */
+}
+
+.login-options button:nth-child(2) {
+    background-color: #4285F4; /* 구글 블루 */
+    color: white;
+}
+
+.login-options button:nth-child(2):hover {
+    background-color: #357AE8; /* 더 어두운 구글 블루 */
+}
+
+.login-options button:nth-child(3) {
+    background-color: #1877F2; /* 페이스북 블루 */
+    color: white;
+}
+
+.login-options button:nth-child(3):hover {
+    background-color: #145DBF; /* 더 어두운 페이스북 블루 */
+}
+
 
 .login-footer {
     font-size: 12px;
