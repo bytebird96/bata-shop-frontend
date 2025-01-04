@@ -1,55 +1,78 @@
-import React, { useState, useEffect, useRef } from 'react';
-import axios from "axios";
+import React, { useState, useRef } from 'react';
+import axios from 'axios';
 import './LoginForm.css';
 
-function LoginForm() {
-    const [loginId, setLoginId] = useState(''); // loginId 상태 관리
-    const [password, setPassword] = useState(''); // loginId 상태 관리
-    const inputRef = useRef(null); // input 요소에 대한 참조 생성
+function LoginForm({ onSwitchToSignup }) {
+    const [loginId, setLoginId] = useState('');
+    const [password, setPassword] = useState('');
+    const [isPasswordInputVisible, setIsPasswordInputVisible] = useState(false);
+    const inputRef = useRef(null);
 
-    const handleLogin = () => {
-        if (!loginId.trim() || !password.trim()) {
-            inputRef.current.focus(); // loginId가 비어 있으면 포커스 이동
+    const handleLogin = async () => {
+        if (!loginId.trim()) {
+            inputRef.current.focus();
         } else {
-            console.log('로그인 시도:', loginId);
-            //axios.post('/login', inputRef);
-
-
+            try {
+                const response = await axios.get(
+                    `http://localhost:8080/bata-shop/api/auth/isUserExist?userId=${loginId}`
+                );
+                if (response.data) {
+                    setIsPasswordInputVisible(true);
+                } else {
+                    onSwitchToSignup(); // 회원가입 폼으로 전환
+                }
+            } catch (error) {
+                console.error('Error checking user existence:', error);
+                alert('로그인 중 오류가 발생했습니다.');
+            }
         }
+    };
+
+    const handlePasswordSubmit = () => {
+        if (!password.trim()) {
+            alert('비밀번호를 입력해주세요.');
+            return;
+        }
+        // 비밀번호 검증 로직 추가
+        console.log('로그인 성공:', { loginId, password });
     };
 
     return (
         <div className="login-form">
-            <h2>로그인/회원가입</h2>
-            <p>🔒 모든 데이터는 암호화됩니다</p>
-            <input
-                type="text"
-                placeholder="이메일 또는 전화번호"
-                className="login-input"
-                id="loginId"
-                ref={inputRef} // input 요소와 ref 연결
-                value={loginId}
-                onChange={(e) => setLoginId(e.target.value)} // 상태 업데이트
-            />
-            <input
-                type="text"
-                placeholder="패스워드"
-                className="login-input"
-                id="password"
-                ref={inputRef} // input 요소와 ref 연결
-                value={password}
-                onChange={(e) => setPassword(e.target.value)} // 상태 업데이트
-            />
-            <button className="login-button" onClick={handleLogin}>계속</button>
-            <p>다른 방법으로 로그인:</p>
-            <div className="login-options">
-                <button>카카오</button>
-                <button>Google</button>
-                <button>Facebook</button>
-            </div>
-            <p className="login-footer">
-                계속하면 <a href="#terms">이용 약관</a> 및 <a href="#privacy">개인정보 보호정책</a>에 동의하게 됩니다.
-            </p>
+            <h2>{isPasswordInputVisible ? '비밀번호 입력' : '로그인/회원가입'}</h2>
+            {!isPasswordInputVisible && (
+                <input
+                    type="text"
+                    placeholder="이메일 또는 전화번호"
+                    className="login-input"
+                    ref={inputRef}
+                    value={loginId}
+                    onChange={(e) => setLoginId(e.target.value)}
+                />
+            )}
+            {isPasswordInputVisible && (
+                <input
+                    type="password"
+                    placeholder="비밀번호"
+                    className="password-input"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            )}
+            <button
+                className="login-button"
+                onClick={isPasswordInputVisible ? handlePasswordSubmit : handleLogin}
+            >
+                {isPasswordInputVisible ? '로그인' : '계속'}
+            </button>
+            {!isPasswordInputVisible && (
+                <p className="login-footer">
+                    아직 계정이 없으신가요?{' '}
+                    <button className="signup-link" onClick={onSwitchToSignup}>
+                        회원가입
+                    </button>
+                </p>
+            )}
         </div>
     );
 }

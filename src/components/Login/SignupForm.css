@@ -1,0 +1,61 @@
+.signup-form {
+    text-align: center;
+    padding: 20px;
+}
+
+.signup-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1f1f1f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.signup-form button:hover {
+    transform: scale(1.05); /* 버튼 크기 확대 효과 */
+    background-color: #333; /* 더 어두운 버튼 색상 */
+}
+
+.signup-form button:active {
+    transform: scale(0.95); /* 클릭 시 축소 효과 */
+}
+
+.signup-form .cancel-button {
+    background-color: #ccc; /* 취소 버튼 기본 색상 */
+    color: #333;
+}
+
+.signup-form .cancel-button:hover {
+    background-color: #bbb; /* 취소 버튼 호버 색상 */
+}
+
+.signup-form .cancel-button:active {
+    background-color: #aaa; /* 취소 버튼 클릭 색상 */
+}
+
+.signup-form .info-text {
+    font-size: 12px;
+    color: gray;
+    margin-top: 10px;
+    line-height: 1.5;
+}
