@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './SignupForm.css'; // 스타일 추가
+import './SignupForm.css';
+import axios from "axios"; // 스타일 추가
 
 function SignupForm({ onSwitchToLogin }) {
     const [email, setEmail] = useState('');
@@ -7,13 +8,29 @@ function SignupForm({ onSwitchToLogin }) {
     const [password, setPassword] = useState('');
     const [userName, setUserName] = useState('');
 
-    const handleSignup = () => {
+    const handleSignup = async () => {
         if (!email || !phone || !password || !userName) {
             alert('모든 필드를 입력해주세요.');
             return;
         }
         console.log('회원가입 정보:', { email, phone, password, userName });
-        onSwitchToLogin(); // 회원가입 후 로그인 폼으로 전환
+        try {
+            debugger;
+            const response = await axios.post(
+                `http://localhost:8080/bata-shop/api/auth/register`,
+                {
+                    password : password,
+                    userName : userName,
+                    email : email,
+                    phone : phone
+                }
+            );
+            console.log('서버 응답:', response.data);
+        }catch(error) {
+            console.error('회원가입 중 오류 발생:', error.response ? error.response.data : error.message);
+            throw error;
+        }
+        //onSwitchToLogin(); // 회원가입 후 로그인 폼으로 전환
     };
 
     return (

@@ -16,10 +16,15 @@ function LoginForm({ onSwitchToSignup }) {
                 const response = await axios.get(
                     `http://localhost:8080/bata-shop/api/auth/isUserExist?userId=${loginId}`
                 );
-                if (response.data) {
+                if(response.data.result == "ERROR"){
+                    console.error(response.data.code);
+                    alert(response.data.code);
+                    inputRef.current.focus();
+                }else if(response.data.result == "FAIL"){
+                    alert("존재 하지 않는 회원 입니다.");
+                    onSwitchToSignup();
+                }else{
                     setIsPasswordInputVisible(true);
-                } else {
-                    onSwitchToSignup(); // 회원가입 폼으로 전환
                 }
             } catch (error) {
                 console.error('Error checking user existence:', error);
