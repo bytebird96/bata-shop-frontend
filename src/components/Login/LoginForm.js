@@ -14,7 +14,7 @@ function LoginForm({ onSwitchToSignup }) {
         } else {
             try {
                 const response = await axios.get(
-                    `http://localhost:8080/bata-shop/api/auth/isUserExist?userId=${loginId}`
+                    `http://172.31.10.110:8080/bata-shop/api/auth/isUserExist?userId=${loginId}`
                 );
                 if(response.data.result == "ERROR"){
                     console.error(response.data.code);
@@ -38,6 +38,13 @@ function LoginForm({ onSwitchToSignup }) {
             alert('비밀번호를 입력해주세요.');
             return;
         }
+
+        
+
+
+
+
+
         // 비밀번호 검증 로직 추가
         console.log('로그인 성공:', { loginId, password });
     };

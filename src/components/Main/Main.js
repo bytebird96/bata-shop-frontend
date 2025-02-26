@@ -11,7 +11,7 @@ function Main() {
     //2번 타는 오류 있음 수정 해야함
     useEffect(() => {
         //API 호출
-        axios.get('http://localhost:8080/bata-shop/api/products/getProducts')
+        axios.get('http://172.31.10.110:8080/bata-shop/api/products/getProducts')
             .then((response) => {
                 setProducts(response.data.content); // 상품 데이터 설정
                 setLoading(false);
@@ -33,7 +33,7 @@ function Main() {
                 {products.map((product, index) => (
                     <div key={index} className="product-card">
                         <img
-                            src={`http://localhost:8080/bata-shop/images/${product.image}`
+                            src={`http://172.31.10.110:8080/bata-shop/images/${product.image}`
                                 || `https://via.placeholder.com/150x100?text=Product+${index + 1}`}
                             alt={product.name}
                             className="product-image"
